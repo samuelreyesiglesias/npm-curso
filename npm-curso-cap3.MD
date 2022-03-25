@@ -1,6 +1,5 @@
 Una vez creamos la configuracion inicial de nuestro proyecto nos ubicamos dentro del proyecto, y continuamos:
-Aprenderemos a Instalar paquete global o local,
-instalacion de dependencias
+Aprenderemos a Instalar paquetes globales o locales, la instalacion de dependencias usando npm.
 
 
 Crear directorio:
