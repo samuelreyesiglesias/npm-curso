@@ -54,4 +54,40 @@ $ git commit -m 'module 1 '
 $ git push -u origin master 
  
 
+ DESPUES DE CREAR EL REPOSITORIO, EJECUTAMOS NUEVAMENTE:
+ git init
+
+
+ PARA QUE NOS ACTUALICE LOS DATOS DE NUESSTRO REPOSITORIO,
+ por ejemplo nos agrega repository, bugs, homepage,
+
+ {
+  "name": "module-1-sri",
+  "version": "1.0.2",
+  "description": "Whenever I start a new project, I don't know what to write for the first commit. After doing a “git init” there is technically nothing there...",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "samuel reyes <samuelreyesiglesias@gmail.com>",
+  "license": "MIT",
+  "prefferGlobal": true,
+  "bin": {
+    "module-1-sri": "bin/global.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelreyesiglesias/module-1-sri.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samuelreyesiglesias/module-1-sri/issues"
+  },
+  "homepage": "https://github.com/samuelreyesiglesias/module-1-sri#readme"
+}
 
