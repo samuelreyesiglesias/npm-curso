@@ -1,5 +1,5 @@
 # npm-curso
-curso npm node package manager
+Curso npm - node package manager
 
 
 
