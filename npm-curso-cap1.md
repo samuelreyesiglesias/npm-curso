@@ -1,3 +1,6 @@
+![large](https://user-images.githubusercontent.com/51006648/195677745-4b3016e5-3182-4271-a467-c5194ff14bba.png)
+
+
 # npm-curso
 Curso npm - node package manager
 
@@ -151,6 +154,8 @@ una configuracion de proyecto vacia:
 1.) npm init -y
 o npm init -yes
 
+	
+	
 	
 	
 Esto nos creara un archivo json con las configuraciones necesarias de nuestro proyecto,
