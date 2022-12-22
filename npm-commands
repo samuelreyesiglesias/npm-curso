@@ -1,0 +1,305 @@
+npm i -g server                     esto es para instalarlo el server 
+serve .                             esto es para ejecutar el server , corre por defecto en port 5000
+
+
+
+
+Extension de vue.:
+Vue.js devtools
+
+
+
+Revisar que paquetes disponen de nuevas versiones
+npm outdate
+
+Para ver un output más detallado
+npm outdate --dd
+
+Actualizar los paquetes que no están en la ultima versión
+npm update
+
+Actualizar un paquete especifico
+npm install json-server@latest
+
+
+npm list
+• npm outdate
+• npm update
+• npm install json-server@latest
+• npm uninstall json-server
+• npm uninstall webpack –no-save
+
+^ = Si mantenemos el caret dentro de la configuración de nuestro package estamos garantizando que cuando realicemos una actualización o tengamos un cambio que podamos realizar, vamos a hacer actualización de los cambios menores y de los parches o bug fixes.
+Para quedarnos en una sola versión eliminamos el caret.
+
+~ = Establece que vamos a recibir actualizaciones o cambios solamente de los cambios que son parches o bug fixes.
+
+
+Puedes también especificar scripts con el prefijo “pre” que se ejecutarán automáticamente antes del comando que ejecutaste. Por ejemplo, si defines el comando build y prebuild, cuando corras npm run build el comando prebuild se ejecutará primero. Esto sirbe para poder ejecutar tareas que hagan algún tipo de preparación necesaria para correr el comando principal. Sin embargo, hay que hacer notar que si el comando pre falla (retorna un valor que no es 0) el comando principal no se ejecutará. Esto es algo bueno ya que si nuestro proceso de preparación no se realiza de forma exitosa, puede que tengamos problemas al querer ejecutar la tarea principal.
+
+En algunas ocaciones, sin embargo, la tarea previa puede fallar sin que eso afecte la ejecución de la tarea principal. En esos casos puedes usar || exit 0 para retornar 0:
+
+"presass-build": "(rm css/*.css; rm css/*.css.map) || exit 0"
+
+
+
+Ese es un ejemplo de un comando que hice hace un tiempo. rm puede fallar si el directorio css está vacio, y en ese caso no hay problema, la tarea principal puede funcionar sin ningún problema ya que presass-build tiene el propósito de vaciar ese directorio.
+
+
+
+Los scripts NPM: Son comandos que podemos establecer para poder ejecutar desde la consola. Estos nos van a dar una serie de salidas según sea el caso.
+
+Podemos crear la cantidad de scripts que necesitemos. Estos scripts van a poder correr de forma nativa dentro de nuestra terminal.
+
+
+"dev": "webpack-dev-server --mode development",
+"build": "webpack --mode production",
+"start": "serve ./dist -s -l 8080"
+
+
+Si les aparece un error al ejecutar “npm run format”, quiten las comillas simples del script para que les quede de la siguiente manera:
+
+prettier --write {*.js,src/**/*.{js,jsx}}
+
+
+Ejecutar tareas o script los cuales son comando que podemos establecer y ejecutar desde la consola, y podemos crear los que necesitemos además van a correr de forma nativa dentro de nuestra terminal, para nombrarlo debe ser un shortcut de lo que vamos a ejecutar con npm run <script-name>
+
+"scripts": {
+	"build": "webpack --mode production",
+	"start": "webpack-dev-server --open --mode development",
+	"format": "prettier --write '{**.js,src/**/*.{js,jsx}}'"
+	"lint": "eslint src/ --fix",
+	//aqui podemos concatenar dos comandos
+	"deploy": "npm run format && npm run build"
+}
+
+
+Por ejemplo npm run build ejecuta internamente webpack --mode production, si quisieramos agregarle otro parametro desde npm a webpack tendremos que usar dobles guiones “–” seguido del parametro que recibirá nuestro comando interno.
+.
+Entonces tendríamos lo siguiente npm run build -- --env NODE_ENV=local lo que internamente sería webpack --mode production --env NODE_ENV=local aunque no tengamos especificado el parámetro --env en el package.json
+.
+Este ejemplo puede ser útil para tener un solo comando para hacer un build en distintos environments sin necesidad de crear los tipicos scripts de:
+.
+npm run build:development
+npm run build:staging
+npm run build:production
+
+
+
+Los scripts en NPM son comandos que podemos establecer para poder ejecutar en la console. Podemos ver sus OUTPUT Segun sea el caso.
+
+podemos crear cualquier cantidad de Scripts, correran de forma nativa dentro de la terminal. Para agregar en el Package.json en la parte de scripts, le agregamos nombre que sera la formula en la que llamamos a los comandos.
+
+"nombre" : "comandos a ejecutar"
+
+
+
+Los scripts NPM: Son comandos que podemos establecer para poder ejecutar desde la consola. Estos nos van a dar una serie de salidas según sea el caso.
+
+Podemos crear la cantidad de scripts que necesitemos. Estos scripts van a poder correr de forma nativa dentro de nuestra terminal.
+
+
+Para crear un script la estructura es la siguiente:
+"nombre del script": "comando",
+
+También podemos concatenar comando
+"nombre del script": "comando && otro comando",
+
+Podemos pasar argumentos a nuestros scripts configurados en package.js
+.
+
+npm run <command> [-- <args>]
+
+
+En caso de que nuestros archivos de node_module no estén bien instalados o tengamos una versión anterior lo que podemos hacer es lo siguiente:
+npm cache clear --force
+#Para verificar que verdaderamente se borro podemos usar
+npm cache verify
+
+
+
+npm run build --dd
+
+para poder activar la opción de verbose (es decir que nos muestre mayor información de lo que esta haciendo el comando)
+npm run [comando] --dd
+
+
+npm ci
+que lo que haces es un clean install o instalacion limpia
+
+
+Tener en cuenta que el comando a utilizar para modo verbose es –dd, Dos guiones y dos letras ‘d’.
+
+npm install react --dd
+
+npm run build --dd para ver el output en la terminal
+
+
+limpiar errores
+npm cache clean --force
+
+ls listar
+
+eliminar carpeta
+rm -rf node_modules
+
+npm install  volver a instalar todas las dependencias.
+
+si tenemos problemas de eliminar , instalar un comando
+
+con permisos debes ejecutar este comando de manera global
+sudo npm install -g rimraf
+
+forma de borrar dependencias
+rimraf node_modules
+
+
+npm install   vuelve a instalar dependencias
+
+
+
+
+
+Podemos revisar las vulnerabilidades de nuestro proyecto con:
+npm audit
+En caso de tener vulverabilidades, se recomienda usar el comando:
+npm audit fix
+Y en caso de que esto no lo solucione, podemos ir actualizandolos de uno en uno.
+
+
+npm audit para ver las vulnerabilidades que tenemos en nuestro proyecto
+npm audit --json nos genera un json con información un poco mas detallada de lo que esta pasando con estos paquetes que instalamos
+una ves sepamos cual es la vulnerabilidad podemos proceder a actualizar cualquiera de los paquetes ejem: npm update eslint-utils --depth 2 esto para instalar todas sus dependencias
+nom audit fix es para solucionar las vulnerabilidades que tengamos en nuestro proyecto básicamente
+
+
+
+
+npm install instala dependencias
+
+si encuentra vulnerabilidades nos muestra error
+
+
+npm audit es para encontrar errores
+npm audit --json  genera documento detallado 
+
+npm update	eslint-utils --depth 2
+
+garantizar que no tenemos ninguna vulnerabilidad
+npm audit fix 
+
+sitio de seguridad
+https://snyk.io/
+
+
+
+
+
+
+Ejecutar el comando para saber donde estoy ubicado
+
+pwd
+mkdir random-messages
+cd random-messages/
+git init
+npm init
+
+
+
+
+esto en el package json.
+{
+    "name": "random-messages",
+    "version": "1.0.0",
+    "description": "random de mensajes",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "javascript",
+        "node",
+        "npm"
+    ],
+    "author": "samuel reyes <samuel.reyes@grupolorena.com.sv>",
+    "license": "MIT",
+    "bin": {
+        "random-msg": "./bin/global.js",
+    },
+    "prefferGlobal": true
+}
+
+
+
+
+
+
+
+
+
+
+
+AGREGAR USUARIO DE NPM:
+npx adduser 
+
+npm login
+
+SABER EL USUARIO ACTUAL:
+npm whoami
+
+SABER LAS CONFIGURACIONES ACTUALES DE NPM:
+npm config list
+npm config list --json
+
+
+setear datos
+
+npm set init.author.email = "samuelreyesiglesias@gmail.com"
+npm set  init.author.license = "MIT"
+npm set  init.author.name = "samuel reyes"
+npm set  init.author.username = "samuelreyesiglesias"
+
+
+
+npm access public [<package>]
+npm access restricted [<package>]
+npm access grant <read-only|read-write> <scope:team> [<package>]
+npm access revoke <scope:team> [<package>]
+npm access 2fa-required [<package>]
+npm access 2fa-not-required [<package>]
+npm access ls-packages [<user>|<scope>|<scope:team>]
+npm access ls-collaborators [<package> [<user>]]
+npm access edit [<package>]
+
+
+Synopsis
+npm cache add <tarball file>...
+npm cache add <folder>...
+npm cache add <tarball url>...
+npm cache add <name>@<version>...
+npm cache clean
+aliases: npm cache clear, npm cache rm
+npm cache verify
+
+
+
+ESTO 
+"publishConfig": {
+        "access": "public"
+    }
+
+
+O ESTO EN JSON
+        },
+    "prefferGlobal": true,
+    "dependencies": {
+        "user": "^0.0.0"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    }
+}
+
+
+
+
